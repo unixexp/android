@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="4dp"
+    android:background="@color/colorElevenV1"
+    android:id="@+id/head"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/loadingScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.example.tscalculator.widgets.Logo
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/workScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/colorElevenV1"
+        android:visibility="invisible">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="4dp"
+    android:background="@color/colorFiveV1"
+    android:id="@+id/main"
+    tools:context=".MainActivity">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/frequency_generator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frequency_generator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_rect"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pager"
+        app:layout_constraintBottom_toTopOf="@id/tabs"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="4dp"
+        android:padding="8dp">
+
+        <com.example.tscalculator.widgets.AnimatedToggleButton
+            android:id="@+id/lt500hz"
+            android:layout_width="48dp"
+            android:layout_height="16dp"
+            android:background="@drawable/button_frequency_range"
+            android:textOff="@string/lt_500hz"
+            android:textOn="@string/lt_500hz"
+            android:textColor="@color/colorTwoV1"
+            android:textSize="8sp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bt_500_2000hz"
+            app:layout_constraintRight_toLeftOf="@id/frequency_display"
+            />
+
+        <com.example.tscalculator.widgets.AnimatedToggleButton
+            android:id="@+id/bt_500_2000hz"
+            android:layout_width="48dp"
+            android:layout_height="16dp"
+            android:background="@drawable/button_frequency_range"
+            android:textOff="@string/bt_500_2000hz"
+            android:textOn="@string/bt_500_2000hz"
+            android:textColor="@color/colorTwoV1"
+            android:textSize="8sp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lt500hz"
+            app:layout_constraintRight_toLeftOf="@id/frequency_display"
+            />
+
+        <com.example.tscalculator.widgets.AnimatedToggleButton
+            android:id="@+id/gt_2000hz"
+            android:layout_width="48dp"
+            android:layout_height="16dp"
+            android:background="@drawable/button_frequency_range"
+            android:textOff="@string/gt_2000hz"
+            android:textOn="@string/gt_2000hz"
+            android:textColor="@color/colorTwoV1"
+            android:textSize="8sp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bt_500_2000hz"
+            app:layout_constraintRight_toLeftOf="@id/frequency_display"
+            />
+
+        <TextView
+            android:id="@+id/frequency_display"
+            android:background="@drawable/rounded_rect_dark"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:typeface="monospace"
+            android:textColor="@color/colorFourV1"
+            android:gravity="center|right"
+            android:textSize="32sp"
+            android:text="500"
+            android:paddingRight="8dp"
+            app:layout_constraintLeft_toRightOf="@id/lt500hz"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/button_play_tone"
+            android:layout_marginRight="8dp" />
+
+        <SeekBar
+            android:id="@+id/frequency_seek"
+            android:background="@drawable/rounded_rect"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/button_frequency_down"
+            app:layout_constraintTop_toBottomOf="@id/frequency_display"
+            />
+
+        <com.example.tscalculator.widgets.AnimatedToggleButton
+            android:id="@+id/button_play_tone"
+            android:layout_width="96dp"
+            android:layout_height="48dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/frequency_display"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@drawable/button_play_selector"
+            android:textOff=""
+            android:textOn=""
+            />
+
+        <ImageButton
+            android:id="@+id/button_frequency_down"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="4dp"
+            android:background="@drawable/button_frequency_down_selector"
+            app:layout_constraintTop_toBottomOf="@id/button_play_tone"
+            app:layout_constraintLeft_toRightOf="@id/frequency_seek"
+            app:layout_constraintRight_toLeftOf="@id/button_frequency_up"
+            />
+
+        <ImageButton
+            android:id="@+id/button_frequency_up"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_frequency_up_selector"
+            app:layout_constraintTop_toBottomOf="@id/button_play_tone"
+            app:layout_constraintLeft_toRightOf="@id/button_frequency_down"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:background="@color/colorFiveV1"
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frequency_generator"
+        app:layout_constraintBottom_toBottomOf="parent">
+    </com.google.android.material.tabs.TabLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:visibility="invisible"
+        android:id="@+id/aboutScreen"
+        android:background="@color/colorElevenV1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.example.tscalculator.widgets.LogoAbout
+            android:id="@+id/logoAbout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

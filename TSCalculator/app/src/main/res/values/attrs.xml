@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Wire">
+        <attr name="single" format="integer"/>
+        <attr name="singleVertical" format="integer"/>
+        <attr name="end" format="boolean"/>
+    </declare-styleable>
+    <integer name="MINUS">0</integer>
+    <integer name="PLUS">1</integer>
+</resources>

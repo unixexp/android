@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorFiveV1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:background="@drawable/rounded_rect"
+        android:textColor="@color/colorTwoV1"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:text="@string/qts_header"
+        android:fontFamily="monospace"
+        android:textAlignment="center"
+        android:layout_margin="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/circuit"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/rounded_rect"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toTopOf="@id/graphLayout"
+        android:layout_margin="8dp"
+        android:padding="8dp">
+
+        <com.example.tscalculator.widgets.FrequencyGenerator
+            android:id="@+id/generator"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </com.example.tscalculator.widgets.FrequencyGenerator>
+
+        <com.example.tscalculator.widgets.Amplifier
+            android:id="@+id/amplifier"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+        </com.example.tscalculator.widgets.Amplifier>
+
+        <com.example.tscalculator.widgets.Multimeter
+            android:id="@+id/multimeter"
+            android:layout_width="45dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="40dp"
+            app:layout_constraintRight_toLeftOf="@id/speaker"
+            app:layout_constraintTop_toTopOf="parent">
+        </com.example.tscalculator.widgets.Multimeter>
+
+        <com.example.tscalculator.widgets.VerticalWire
+            android:id="@+id/verticalWire1"
+            android:layout_width="20dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="30dp"
+            app:layout_constraintLeft_toLeftOf="@id/generator"
+            app:layout_constraintTop_toBottomOf="@id/generator"
+            app:layout_constraintBottom_toTopOf="@id/amplifier"/>
+
+        <com.example.tscalculator.widgets.HorizontalWire
+            android:id="@+id/horizontalWire1"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="@id/amplifier"
+            app:layout_constraintLeft_toRightOf="@id/amplifier"
+            app:layout_constraintRight_toLeftOf="@id/tripleWire1" />
+
+        <ImageView
+            android:id="@+id/resistor"
+            android:layout_width="30dp"
+            android:layout_height="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/resistor"
+            app:layout_constraintRight_toLeftOf="@+id/tripleWire1"
+            app:layout_constraintTop_toTopOf="@+id/horizontalWire1" />
+
+        <com.example.tscalculator.widgets.VerticalWire
+            android:id="@+id/verticalSingleWire3"
+            android:layout_width="20dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="12dp"
+            app:layout_constraintTop_toBottomOf="@id/multimeter"
+            app:layout_constraintLeft_toLeftOf="@id/multimeter"
+            app:layout_constraintBottom_toTopOf="@id/tripleWire1" />
+
+        <com.example.tscalculator.widgets.TripleWire
+            android:id="@+id/tripleWire1"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="12dp"
+            app:layout_constraintLeft_toLeftOf="@id/multimeter"
+            app:layout_constraintBottom_toBottomOf="@id/amplifier"
+            app:layout_constraintRight_toLeftOf="@id/tripleWire2"/>
+
+        <com.example.tscalculator.widgets.TripleWire
+            android:id="@+id/tripleWire2"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="15dp"
+            app:end="true"
+            app:layout_constraintLeft_toRightOf="@id/tripleWire1"
+            app:layout_constraintBottom_toBottomOf="@id/amplifier"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <ImageView
+            android:id="@+id/speaker"
+            android:layout_width="70dp"
+            android:layout_height="0dp"
+            android:background="@drawable/speaker"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/graphLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_rect_dark"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/circuit"
+        app:layout_constraintBottom_toTopOf="@id/body"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="4dp">
+
+        <com.example.tscalculator.widgets.Graph
+            android:id="@+id/graph"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/body"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_rect"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/graphLayout">
+
+        <TextView
+            android:id="@+id/overview_body_text_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTwoV1"
+            android:fontFamily="monospace"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="8dp"
+            android:text="@string/overview_body_text_9"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fieldF2"
+            />
+
+        <TextView
+            android:id="@+id/overview_body_text_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTwoV1"
+            android:fontFamily="monospace"
+            android:textSize="12sp"
+            android:text="@string/overview_body_text_10"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/overview_body_text_1"
+            />
+
+        <TextView
+            android:id="@+id/textU12"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:textColor="@color/colorTenV1"
+            android:fontFamily="monospace"
+            android:textSize="14sp"
+            android:text="@string/u12_string"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/fieldU12"
+            />
+
+        <EditText
+            android:id="@+id/fieldU12"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:background="@drawable/rounded_rect"
+            android:textColor="@color/colorTenV1"
+            android:textSize="16sp"
+            android:text="0"
+            android:inputType="none"
+            android:enabled="false"
+            android:fontFamily="monospace"
+            android:textAlignment="viewEnd"
+            android:paddingRight="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/textU12"
+            />
+
+        <TextView
+            android:id="@+id/volt_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTenV1"
+            android:fontFamily="monospace"
+            android:textSize="14sp"
+            android:text="@string/volt_string"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toRightOf="@id/fieldU12"
+            app:layout_constraintTop_toTopOf="@id/fieldU12"
+            />
+
+        <TextView
+            android:id="@+id/textF1"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:textColor="@color/colorOneV1"
+            android:fontFamily="monospace"
+            android:textSize="14sp"
+            android:text="@string/f1_string"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/fieldF1"
+            />
+
+        <EditText
+            android:id="@+id/fieldF1"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:background="@drawable/rounded_rect_dark"
+            android:textColor="@color/colorFourV1"
+            android:textSize="16sp"
+            android:text="0"
+            android:inputType="number"
+            android:fontFamily="monospace"
+            android:textAlignment="viewEnd"
+            android:paddingRight="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/fieldU12"
+            app:layout_constraintLeft_toRightOf="@id/textF1"
+            />
+
+        <TextView
+            android:id="@+id/hz_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTwoV1"
+            android:fontFamily="monospace"
+            android:textSize="14sp"
+            android:text="@string/hz_string"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toRightOf="@id/fieldF1"
+            app:layout_constraintTop_toTopOf="@id/fieldF1"
+            />
+
+        <TextView
+            android:id="@+id/textF2"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:textColor="@color/colorOneV1"
+            android:fontFamily="monospace"
+            android:textSize="14sp"
+            android:text="@string/f2_string"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/fieldF2"
+            />
+
+        <EditText
+            android:id="@+id/fieldF2"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:background="@drawable/rounded_rect_dark"
+            android:textColor="@color/colorFourV1"
+            android:textSize="16sp"
+            android:text="0"
+            android:inputType="number"
+            android:fontFamily="monospace"
+            android:textAlignment="viewEnd"
+            android:paddingRight="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/fieldF1"
+            app:layout_constraintLeft_toRightOf="@id/textF1"
+            />
+
+        <TextView
+            android:id="@+id/hz_text2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTwoV1"
+            android:fontFamily="monospace"
+            android:textSize="14sp"
+            android:text="@string/hz_string"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toRightOf="@id/fieldF2"
+            app:layout_constraintTop_toTopOf="@id/fieldF2"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
